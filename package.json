@@ -1,0 +1,13 @@
+{
+  "name": "static-pull-stream",
+  "version": "0.0.0",
+  "description": "Definitions of common algebras for [pull-streams](https://github.com/pull-stream)",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test.js"
+  },
+  "keywords": [],
+  "author": "rjmk",
+  "license": "ISC",
+  "dependencies": {}
+}
