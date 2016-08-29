@@ -1,10 +1,9 @@
-exports.sourceStatic = {
+exports.source = {
   concat: concat,
   empty: empty,
   map: map,
   ap: ap,
-  of: of,
-  chain: chain
+  of: of
 }
 
 function concat (s, t) {
@@ -66,21 +65,6 @@ function of (x) {
     if (abort) return cb(abort)
     cb(called, x)
     called = true
-  }
-}
-
-function chain (f, s) {
-  var result = function (_, cb) { return cb(true) }
-
-  return function go (abort, cb) {
-    result(abort, function (end, data) {
-      if (!end) return cb(null, data)
-      s(abort, function (end, data) {
-        if (end === true) return cb(true)
-        result = concat(result, f(data))
-        go(abort, cb)
-      })
-    })
   }
 }
 

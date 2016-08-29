@@ -1,5 +1,5 @@
 {
-  "name": "static-pull-stream",
+  "name": "static-land-pull-stream",
   "version": "0.0.0",
   "description": "Definitions of common algebras for [pull-streams](https://github.com/pull-stream)",
   "main": "index.js",
