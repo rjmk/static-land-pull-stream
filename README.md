@@ -5,7 +5,7 @@ using the [static-land](https://github.com/rpominov/static-land) spec.
 
 ## Installation
 
-`npm install static-pull`
+`npm install static-land-pull-stream`
 
 ## Usage
 
