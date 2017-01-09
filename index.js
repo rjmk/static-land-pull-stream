@@ -1,5 +1,6 @@
 exports.source = {
   concat: concat,
+  chain: chain,
   empty: empty,
   map: map,
   ap: ap,
@@ -15,6 +16,15 @@ function concat (s, t) {
       if (!end) return cb(null, data)
       sFinished = true
       stream(abort, cb)
+    })
+  }
+}
+
+function chain(f, stream) {
+  return function (abort, cb) {
+    stream(abort, function (end, data) {
+      if (end) return cb(end)
+      f(data)(abort, cb)
     })
   }
 }
@@ -67,4 +77,3 @@ function of (x) {
     called = true
   }
 }
-
