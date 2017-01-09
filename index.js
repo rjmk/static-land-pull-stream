@@ -41,32 +41,8 @@ function map (f, stream) {
   }
 }
 
-function ap (s, t) {
-  return function (abort, cb) {
-    var streams = {
-      s: { returned: false, end: null, data: undefined, stream: s },
-      t: { returned: false, end: null, data: undefined, stream: t }
-    }
-
-    function pull (s) {
-      s.stream(abort, function (end, data) {
-        s.returned = true
-        s.data = data
-        s.end = end
-
-        if (streams.s.end || streams.t.end) return cb(true)
-
-        if (streams.s.returned && streams.t.returned)
-          cb(null, streams.s.data(streams.t.data))
-      })
-    }
-
-    eachStream(pull)
-
-    function eachStream (f) {
-      return [ 's', 't' ].forEach(function (s) { f(streams[s]) })
-    }
-  }
+function ap(s, t) {
+  return chain(f => map(f, t), s)
 }
 
 function of (x) {
