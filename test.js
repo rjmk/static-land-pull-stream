@@ -18,6 +18,8 @@ assertFull([1,2,3,4], 'CHAIN')(source.chain(source.of, values([1, 2, 3, 4])))
 assertFull([1,2,3,4], 'CHAIN assoc 1')(source.chain(source.of, source.chain(values, values([[1],[2],[3],[4]]))))
 assertFull([1,2,3,4], 'CHAIN assoc 2')(source.chain(x => source.chain(source.of, values(x)), values([[1],[2],[3],[4]])))
 
+assertFull([1], 'OF regression')(source.chain(source.of, source.of(1)))
+
 function assertFull(array, message) {
   return toArray(x => assert.deepEqual(x, array, message))
 }

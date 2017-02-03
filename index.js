@@ -48,8 +48,8 @@ function ap(s, t) {
 function of (x) {
   var called = false
   return function (abort, cb) {
-    if (abort) return cb(abort)
-    cb(called, x)
+    if (abort || called) return cb(abort || called)
     called = true
+    cb(false, x)
   }
 }
