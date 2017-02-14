@@ -22,8 +22,7 @@ Algebras implemented:
 * Functor
 * Apply
 * Applicative
-
-A sensible `chain` method can be created, but not one that derives the `ap` included here.
+* Chain
 
 ## Vibe
 
